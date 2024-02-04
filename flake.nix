@@ -61,6 +61,11 @@
 
     {
       templates = rec {
+        c = {
+          path = ./c;
+          description = "C development environment";
+        };
+
         nix = {
           path = ./nix;
           description = "Nix development environment";
