@@ -61,6 +61,12 @@
 
     {
       templates = rec {
+
+        default = {
+          path = ./default;
+          description = "Empty development environment";
+        };
+
         c = {
           path = ./c;
           description = "C development environment";
