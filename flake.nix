@@ -62,8 +62,10 @@
     {
       templates = rec {
 
-        default = {
-          path = ./default;
+        default = empty;
+
+        empty = {
+          path = ./empty;
           description = "Empty development environment";
         };
 
