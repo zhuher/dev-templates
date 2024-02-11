@@ -13,7 +13,7 @@
     {
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
-          packages = with pkgs; [ gcc-unwrapped man-pages clang-tools cppcheck lldb ccls lcov subunit ];
+          packages = with pkgs; [ gcc-unwrapped man-pages clang-tools cppcheck lldb ccls lcov subunit check ];
         };
       });
     };
