@@ -13,7 +13,15 @@
     in {
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
-          packages = with pkgs; [ cachix lorri niv nixfmt statix vulnix ];
+          packages = with pkgs; [
+            cachix
+            lorri
+            niv
+            nixfmt-rfc-style
+            statix
+            vulnix
+            nil
+          ];
         };
       });
     };
