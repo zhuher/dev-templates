@@ -83,11 +83,11 @@
           description = "Rust development environment";
         };
 
-        rust-toolchain = {
-          path = ./rust-toolchain;
-          description =
-            "Rust development environment with Rust version defined by a rust-toolchain.toml file";
-        };
+        #rust-toolchain = {
+        #  path = ./rust-toolchain;
+        #  description =
+        #    "Rust development environment with Rust version defined by a rust-toolchain.toml file";
+        #};
 
         shell = {
           path = ./shell;
@@ -100,7 +100,7 @@
         };
 
         # Aliases
-        rt = rust-toolchain;
+        # rt = rust-toolchain;
       };
     };
 }
