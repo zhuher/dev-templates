@@ -21,15 +21,17 @@
         {
           default = pkgs.mkShell {
             packages = with pkgs; [
-              gcc
               man-pages
-              clang-tools
+              subunit
               cppcheck
               lldb
-              ccls
               lcov
-              subunit
               check
+              libgcc
+              gcc13
+              llvmPackages_18.clang-unwrapped
+              llvmPackages_18.clang-manpages
+              man-pages-posix
             ];
           };
         }
