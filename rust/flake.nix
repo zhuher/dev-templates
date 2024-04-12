@@ -20,25 +20,42 @@
       supportedSystems = [
         "x86_64-linux"
         "aarch64-linux"
-        "x86_64-darwin"
         "aarch64-darwin"
       ];
+      rver = "latest";
       forEachSupportedSystem =
         f:
         nixpkgs.lib.genAttrs supportedSystems (
-          system: f { pkgs = import nixpkgs { inherit overlays system; }; }
+          system:
+          f rec {
+            pkgs = import nixpkgs { inherit overlays system; };
+            rust = pkgs.rust-bin.stable.${rver}.default.override {
+              extensions = [
+                "cargo"
+                "clippy-preview"
+                "rust"
+                "rust-analyzer-preview"
+                "rust-docs"
+                "rust-src"
+                "rust-std"
+                "rustc"
+                "rustfmt-preview"
+                #note: components available for aarch64-apple-darwin: cargo clippy clippy-preview llvm-tools llvm-tools-preview rls rls-preview rust rust-analysis rust-analyzer rust-analyzer-preview rust-docs rust-src rust-std rustc rustc-dev rustfmt rustfmt-preview
+              ];
+            };
+          }
         );
     in
     {
       devShells = forEachSupportedSystem (
-        { pkgs }:
+        { pkgs, rust }:
         {
           default = pkgs.mkShell {
             packages = with pkgs; [
-              rust-analyzer
               bacon
-              rust-bin.stable.latest.default
+              rust
             ];
+            RUST_BACKTRACE = 1;
           };
         }
       );
