@@ -21,7 +21,6 @@
         {
           default = pkgs.mkShell {
             packages = with pkgs; [
-              man-pages
               subunit
               cppcheck
               lldb
